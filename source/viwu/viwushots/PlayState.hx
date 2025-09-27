@@ -1,6 +1,7 @@
 package viwu.viwushots;
 
 import flixel.FlxState;
+import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
@@ -14,6 +15,7 @@ class PlayState extends FlxState
 		viwu_ghost = new Viwu();
 		add(viwu_ghost);
 		viwu_ghost.alpha = .5;
+		viwu_ghost.color = FlxColor.RED; // red for visability
 
 		viwu = new Viwu();
 		add(viwu);
