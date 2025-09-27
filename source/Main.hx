@@ -45,6 +45,7 @@ class Main extends Sprite
 		addChild(new FlxGame(0, 0, sphis.viwushots.PlayState));
 		#end
 
+		#if debug
 		ConsoleUtil.registerFunction('NewTarget', () ->
 		{
 			Balloon.initTypes();
@@ -58,5 +59,6 @@ class Main extends Sprite
 
 			FlxG.resetGame();
 		});
+		#end
 	}
 }
