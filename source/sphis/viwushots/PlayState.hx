@@ -33,6 +33,11 @@ class PlayState extends FlxState
 
 		add(new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633')).screenCenter());
 
+		scoreText = new FlxText(0, 0, 0, "Score: gay", 64);
+		scoreText.scrollFactor.set();
+		scoreText.alpha = .5;
+		add(scoreText);
+
 		balloonGroup = new FlxTypedGroup<Balloon>();
 		add(balloonGroup);
 
@@ -51,16 +56,14 @@ class PlayState extends FlxState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, .2);
-
-		scoreText = new FlxText(0, 0, FlxG.width, "Score: gay", 32);
-		scoreText.alignment = 'center';
-		add(scoreText);
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		scoreText.text = 'Score: $score';
+
+		scoreText.text = '$score';
+		scoreText.screenCenter();
 
 		if (FlxG.keys.justReleased.F && !focusMode)
 		{
