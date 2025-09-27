@@ -98,12 +98,18 @@ class PlayState extends FlxState
 			});
 			for (balloon in balloonGroup.members)
 			{
-				FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0, alpha: .25}, 1, {
+				FlxTween.tween(balloon, {alpha: .25}, 1, {
+					startDelay: .204
+				});
+				FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0}, 1, {
 					startDelay: .204
 				});
 			}
 
-			FlxTween.tween(camFollow, {x: viwu.x}, 1, {
+			FlxTween.tween(camFollow, {x: 0}, 1, {
+				startDelay: .204
+			});
+			FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1, {
 				startDelay: .204
 			});
 		}
@@ -134,7 +140,8 @@ class PlayState extends FlxState
 		}
 		else
 		{
-			camFollow.setPosition(FlxG.width / 2, FlxG.height / 2);
+			if (score > -1000)
+				camFollow.setPosition(FlxG.width / 2, FlxG.height / 2);
 		}
 
 		FlxG.watch.addQuick('camFollow pos', camFollow.getPosition());
