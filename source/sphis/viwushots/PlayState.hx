@@ -28,6 +28,7 @@ class PlayState extends FlxState
 	public var score:Int = 0;
 	public var scoreText:FlxText;
 
+	public var vinylStop:FlxSound;
 	public var balloonPop:FlxSound;
 	public var pistol:FlxSound;
 
@@ -39,6 +40,7 @@ class PlayState extends FlxState
 
 		balloonPop = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
 		pistol = new FlxSound().loadStream('assets/sounds/pistol.wav');
+		vinylStop = new FlxSound().loadStream('assets/sounds/vinyl-stop.wav');
 
 		background = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633'));
 		background.screenCenter();
@@ -85,6 +87,26 @@ class PlayState extends FlxState
 
 		scoreText.text = 'Score:\n$score\nHighscore:\n${FlxG.save.data.highscore ?? 0}';
 		scoreText.screenCenter();
+
+		if (score < -1000)
+		{
+			maxBalloons = 0;
+			vinylStop.play();
+
+			FlxTween.tween(background, {alpha: .25}, 1, {
+				startDelay: .204
+			});
+			for (balloon in balloonGroup.members)
+			{
+				FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0, alpha: .25}, 1, {
+					startDelay: .204
+				});
+			}
+
+			FlxTween.tween(camFollow, {x: viwu.x}, 1, {
+				startDelay: .204
+			});
+		}
 
 		if (FlxG.keys.justReleased.F && !focusMode)
 		{
