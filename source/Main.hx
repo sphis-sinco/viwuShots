@@ -18,7 +18,11 @@ class Main extends Sprite
 		Balloon.initTypes();
 		Target.getPositions();
 
+		#if randomSave
+		FlxG.save.bind('Viwu Shots (Random Save)', 'Sphis');
+		#else
 		FlxG.save.bind('Viwu Shots', 'Sphis');
+		#end
 
 		Application.current.onExit.add(l ->
 		{
@@ -26,7 +30,11 @@ class Main extends Sprite
 		});
 
 		if (FlxG.save.data.highscore == null)
-			FlxG.save.data.highscore = #if randomSave FlxG.random.int(0, Std.int(300 * FlxG.random.float(0, 10))) #else 0 #end;
+			FlxG.save.data.highscore = 0;
+
+		#if randomSave
+		FlxG.save.data.highscore = FlxG.random.int(0, Std.int(300 * FlxG.random.float(0, 10)));
+		#end
 
 		#if ViwuShootAnimationOffsetsState
 		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
