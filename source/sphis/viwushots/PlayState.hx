@@ -43,7 +43,7 @@ class PlayState extends FlxState
 		balloonPop = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
 
 		balloonPopFaded = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
-		balloonPopFaded.volume = .25;
+		balloonPopFaded.volume = .1;
 
 		pistol = new FlxSound().loadStream('assets/sounds/pistol.wav');
 		vinylStop = new FlxSound().loadStream('assets/sounds/vinyl-stop.wav');
