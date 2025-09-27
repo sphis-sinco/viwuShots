@@ -15,6 +15,7 @@ class PlayState extends FlxState
 	public var floor:FlxSprite;
 
 	public var focusMode:Bool = false;
+	public var shot:Bool = false;
 
 	public var camFollow:FlxObject;
 
@@ -111,6 +112,22 @@ class PlayState extends FlxState
 			{
 				balloonGroup.members.remove(balloon);
 				balloon.destroy();
+			}
+
+			if (focusMode && !shot && FlxG.mouse.justReleased && FlxG.mouse.overlaps(balloon))
+			{
+				shot = true;
+
+				balloonGroup.members.remove(balloon);
+				balloon.destroy();
+
+				viwu.animation.play('shoot');
+
+				viwu.animation.onFinish.add(animName ->
+				{
+					shot = false;
+					viwu.animation.onFinish.removeAll();
+				});
 			}
 		}
 	}
