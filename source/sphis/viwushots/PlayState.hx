@@ -39,6 +39,8 @@ class PlayState extends FlxState
 
 	public var background:FlxSprite;
 
+	public var targetPiece:FlxSprite;
+
 	override public function new(fadeIn:Bool = false)
 	{
 		super();
@@ -90,6 +92,11 @@ class PlayState extends FlxState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, .2);
+
+		targetPiece = new FlxSprite().loadGraphic('assets/images/targetPiece.png');
+		add(targetPiece);
+
+		targetPiece.setPosition(893.95, 348.95);
 	}
 
 	override public function update(elapsed:Float)
