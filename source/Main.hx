@@ -37,7 +37,16 @@ class Main extends Sprite
 		FlxG.save.data.highscore = FlxG.random.int(0, Std.int(300 * FlxG.random.float(0, 10)));
 		#end
 
-		ConsoleUtil.registerFunction('New Target', () ->
+		#if ViwuShootAnimationOffsetsState
+		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
+		#elseif ViwuGameoverAnimationOffsetsState
+		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuGameoverAnimationOffsetsState));
+		#else
+		addChild(new FlxGame(0, 0, sphis.viwushots.PlayState));
+		#end
+
+		#if debug
+		ConsoleUtil.registerFunction('NewTarget', () ->
 		{
 			Balloon.initTypes();
 			FlxG.resetGame();
@@ -50,13 +59,6 @@ class Main extends Sprite
 
 			FlxG.resetGame();
 		});
-
-		#if ViwuShootAnimationOffsetsState
-		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
-		#elseif ViwuGameoverAnimationOffsetsState
-		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuGameoverAnimationOffsetsState));
-		#else
-		addChild(new FlxGame(0, 0, sphis.viwushots.PlayState));
 		#end
 	}
 }
