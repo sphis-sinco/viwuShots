@@ -30,18 +30,14 @@ class Balloon extends FlxSprite
 
 		var types = [];
 
-		trace(xml.elements);
-
-		for (atlas in xml.elements)
-			if (atlas.name == 'TextureAtlas' && atlas.has.id)
+		for (subtexture in xml.elements)
+		{
+			if (subtexture.name == 'SubTexture' && subtexture.has.name)
 			{
-				for (subtexture in atlas.elements)
-					if (subtexture.name == 'SubTexture' && subtexture.has.name)
-					{
-						trace('Found balloon type: ${subtexture.att.name.replace('balloon ', '').replace('0000', '')}');
-						types.push(subtexture.att.name.replace('balloon ', '').replace('0000', ''));
-					}
+				trace('Found balloon type: ${subtexture.att.name.replace('balloon ', '').replace('0000', '')}');
+				types.push(subtexture.att.name.replace('balloon ', '').replace('0000', ''));
 			}
+		}
 
 		frames = FlxAtlasFrames.fromSparrow('assets/images/balloons.png', 'assets/images/balloons.xml');
 
