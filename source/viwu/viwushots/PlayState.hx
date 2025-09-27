@@ -39,19 +39,16 @@ class PlayState extends FlxState
 			focusMode = true;
 			viwu.animation.play('focus');
 
-			FlxTween.tween(FlxG.camera, {zoom: 1.1}, 1, {
-				ease: FlxEase.sineInOut
-			});
+			FlxTween.cancelTweensOf(FlxG.camera);
+			FlxTween.tween(FlxG.camera, {zoom: 1.25}, .25, {ease: FlxEase.sineIn});
 		}
-
-		if (FlxG.keys.justReleased.F && focusMode)
+		else if (FlxG.keys.justReleased.F && focusMode)
 		{
 			focusMode = false;
 			viwu.animation.play('unfocus');
 
-			FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {
-				ease: FlxEase.sineInOut
-			});
+			FlxTween.cancelTweensOf(FlxG.camera);
+			FlxTween.tween(FlxG.camera, {zoom: 1}, .25, {ease: FlxEase.sineOut});
 		}
 	}
 }
