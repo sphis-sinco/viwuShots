@@ -28,7 +28,7 @@ class Viwu extends FlxSprite
 		offsets.set('idle', new FlxPoint(0, 0));
 		offsets.set('focus', new FlxPoint(0, 0));
 		offsets.set('unfocus', new FlxPoint(0, 0));
-		offsets.set('shoot', new FlxPoint(35, 45));
+		offsets.set('shoot', new FlxPoint(31, 46));
 
 		animation.playCallback = animName ->
 		{
