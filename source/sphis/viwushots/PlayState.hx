@@ -135,6 +135,7 @@ class PlayState extends FlxState
 			FlxTimer.wait(2, () ->
 			{
 				viwu.animation.play('results-bad');
+				openSubState(new GameOverSubState());
 			});
 		}
 
