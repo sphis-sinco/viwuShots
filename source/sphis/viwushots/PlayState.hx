@@ -63,7 +63,10 @@ class PlayState extends FlxState
 
 		if (focusMode)
 		{
-			camFollow.setPosition(FlxG.width - FlxG.mouse.x * 1.5, FlxG.height - FlxG.mouse.y * 2);
+			camFollow.setPosition(FlxG.width - FlxG.mouse.getViewPosition().x * 2, FlxG.height - FlxG.mouse.getViewPosition().y * 2);
+
+			if (camFollow.x < 800)
+				camFollow.x = 800;
 		}
 		else
 		{
