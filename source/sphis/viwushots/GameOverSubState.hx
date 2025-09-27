@@ -23,11 +23,23 @@ class GameOverSubState extends FlxSubState
 		retry.loadGraphic('assets/images/retry.png');
 		retry.alpha = 0;
 
+		gameover.scale.set(.5, .5);
+		gameover.updateHitbox();
+
+		retry.scale.set(.5, .5);
+		retry.updateHitbox();
+
 		add(gameover);
 		add(retry);
 
 		FlxTween.tween(gameover, {alpha: 1}, 1);
 		FlxTween.tween(retry, {alpha: 1}, 1);
+
+		gameover.screenCenter();
+		retry.screenCenter();
+
+		gameover.scrollFactor.set();
+		retry.scrollFactor.set();
 	}
 
 	override function update(elapsed:Float)
@@ -39,7 +51,6 @@ class GameOverSubState extends FlxSubState
 			FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
 			{
 				FlxG.switchState(() -> new PlayState());
-				FlxG.camera.flash(FlxColor.BLACK, 1);
 			});
 		}
 	}

@@ -36,6 +36,14 @@ class PlayState extends FlxState
 
 	public var background:FlxSprite;
 
+	override public function new(fadeIn:Bool = false)
+	{
+		super();
+
+		if (fadeIn)
+			FlxG.camera.flash(FlxColor.BLACK, 1);
+	}
+
 	override public function create()
 	{
 		super.create();
