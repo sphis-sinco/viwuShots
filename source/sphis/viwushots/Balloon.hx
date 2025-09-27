@@ -87,7 +87,7 @@ class Balloon extends FlxSprite
 	{
 		type = animation.getNameList()[FlxG.random.int(0, animation.getNameList().length - 1)];
 
-		if (type == targetType && FlxG.random.bool(1))
+		if (type == targetType && FlxG.random.bool(.1))
 		{
 			useRandomType();
 			return;
