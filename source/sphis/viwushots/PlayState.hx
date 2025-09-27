@@ -243,6 +243,10 @@ class PlayState extends FlxState
 					// balloonPopFaded.play();
 				}
 
+				balloon.outline.size.value = [0, 0];
+				if (focusMode && !shot && FlxG.mouse.overlaps(balloon))
+					balloon.outline.size.value = [16, 16];
+
 				if (focusMode && !shot && FlxG.mouse.justReleased && FlxG.mouse.overlaps(balloon))
 				{
 					shot = true;

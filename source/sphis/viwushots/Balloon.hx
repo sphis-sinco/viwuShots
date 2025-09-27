@@ -18,11 +18,16 @@ class Balloon extends FlxSprite
 
 	public var storage:Dynamic = {};
 
+	public var outline:Outline;
+
 	override public function new()
 	{
 		super(0, 0);
 
 		loadAsset();
+
+		outline = new Outline();
+		this.shader = outline;
 	}
 
 	public static function initTypes()
