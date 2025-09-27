@@ -40,6 +40,7 @@ class PlayState extends FlxState
 	public var background:FlxSprite;
 
 	public var targetPiece:FlxSprite;
+	public var targetPieceTarget:Target;
 
 	override public function new(fadeIn:Bool = false)
 	{
@@ -97,6 +98,9 @@ class PlayState extends FlxState
 		add(targetPiece);
 
 		targetPiece.setPosition(893.95, 348.95);
+
+		targetPieceTarget = new Target();
+		add(targetPieceTarget);
 	}
 
 	override public function update(elapsed:Float)
