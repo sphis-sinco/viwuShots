@@ -60,6 +60,7 @@ class GameOverSubState extends FlxSubState
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
 			{
+				Balloon.initTypes();
 				FlxG.switchState(() -> new PlayState(true));
 			});
 		}
