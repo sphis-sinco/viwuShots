@@ -155,7 +155,10 @@ class PlayState extends FlxState
 			}
 			catch (e)
 			{
-				trace(e);
+				balloonGroup.members.remove(balloon);
+				balloon.destroy();
+
+				trace('obj died becuz of crash');
 			}
 		}
 	}
