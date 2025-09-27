@@ -23,6 +23,8 @@ class PlayState extends FlxState
 	public var balloonGroup:FlxTypedGroup<Balloon>;
 	public var maxBalloons:Int = 5;
 
+	public var score:Int = 0;
+
 	override public function create()
 	{
 		super.create();
@@ -114,6 +116,9 @@ class PlayState extends FlxState
 
 				if (balloon.x > FlxG.width + balloon.width * 2)
 				{
+					if (balloon.type == Balloon.targetType)
+						score -= 50;
+
 					balloonGroup.members.remove(balloon);
 					balloon.destroy();
 				}
@@ -127,6 +132,11 @@ class PlayState extends FlxState
 				{
 					shot = true;
 
+					if (balloon.type == Balloon.targetType)
+						score += 300;
+					else
+						score -= 150;
+
 					balloonGroup.members.remove(balloon);
 					balloon.destroy();
 
@@ -136,7 +146,7 @@ class PlayState extends FlxState
 						FlxG.camera.zoom = 1.25;
 					}
 
-					viwu.animation.play('shoot');
+					viwu.animation.play('shoot', true);
 					FlxTween.tween(FlxG.camera, {zoom: 1.15}, .1, {
 						ease: FlxEase.bounceInOut,
 						onComplete: t ->
@@ -145,11 +155,13 @@ class PlayState extends FlxState
 						}
 					});
 
-					viwu.animation.onFinish.add(animName ->
+					viwu.animation.onFrameChange.add((animName, frameNumber, frameIndex) ->
 					{
-						shot = false;
-
-						viwu.animation.onFinish.removeAll();
+						if (animName == 'shoot' && frameNumber > 8)
+						{
+							shot = false;
+							viwu.animation.onFrameChange.removeAll();
+						}
 					});
 				}
 			}
