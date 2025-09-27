@@ -31,6 +31,8 @@ class PlayState extends FlxState
 	public var balloonPop:FlxSound;
 	public var pistol:FlxSound;
 
+	public var background:FlxSprite;
+
 	override public function create()
 	{
 		super.create();
@@ -38,7 +40,9 @@ class PlayState extends FlxState
 		balloonPop = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
 		pistol = new FlxSound().loadStream('assets/sounds/pistol.wav');
 
-		add(new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633')).screenCenter());
+		background = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633'));
+		background.screenCenter();
+		add(background);
 
 		scoreText = new FlxText(0, 0, 0, "Score: gay", 64);
 		scoreText.scrollFactor.set();
