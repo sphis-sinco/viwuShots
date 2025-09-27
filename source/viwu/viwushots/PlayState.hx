@@ -50,16 +50,15 @@ class PlayState extends FlxState
 				offsets.x -= 1;
 			if (FlxG.keys.justReleased.UP)
 				offsets.y += 1;
-			if (FlxG.keys.justReleased.RIGHT)
+			if (FlxG.keys.justReleased.DOWN)
 				offsets.y -= 1;
 
 			if (FlxG.keys.anyJustReleased([LEFT, DOWN, UP, RIGHT]))
 			{
+				viwu.offsets.set('shoot', offsets);
 				viwu.animation.play('shoot');
 				viwu.animation.pause();
 			}
-
-			viwu.offsets.set('shoot', offsets);
 		}
 		FlxG.watch.addQuick('Viwu shoot offsets', viwu.offsets.get('shoot'));
 	}
