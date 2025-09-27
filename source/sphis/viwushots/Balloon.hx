@@ -85,11 +85,19 @@ class Balloon extends FlxSprite
 
 	public function useRandomType()
 	{
-		animation.play(animation.getNameList()[FlxG.random.int(0, animation.getNameList().length - 1)]);
-
-		type = animation.name;
+		type = animation.getNameList()[FlxG.random.int(0, animation.getNameList().length - 1)];
 
 		if (type == targetType && FlxG.random.bool(1))
+		{
 			useRandomType();
+			return;
+		}
+
+		refresh();
+	}
+
+	public function refresh()
+	{
+		animation.play(type);
 	}
 }
