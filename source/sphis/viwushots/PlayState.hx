@@ -133,14 +133,9 @@ class PlayState extends FlxState
 
 				viwu.animation.onFinish.add(animName ->
 				{
-					viwu.animation.play('focus');
+					shot = false;
 
 					viwu.animation.onFinish.removeAll();
-					viwu.animation.onFinish.add(animName ->
-					{
-						shot = false;
-						viwu.animation.onFinish.removeAll();
-					});
 				});
 			}
 		}
