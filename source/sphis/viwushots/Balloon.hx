@@ -11,7 +11,8 @@ using StringTools;
 
 class Balloon extends FlxSprite
 {
-	static var types = [];
+	public static var types = [];
+	public static var targetType:String;
 
 	public var type:String;
 
@@ -39,10 +40,28 @@ class Balloon extends FlxSprite
 		{
 			if (subtexture.name == 'SubTexture' && subtexture.has.name)
 			{
-				trace('Found balloon type: ${subtexture.att.name.replace('balloon ', '').replace('0000', '')}');
-				types.push(subtexture.att.name.replace('balloon ', '').replace('0000', ''));
+				var typeName = subtexture.att.name.replace('balloon ', '');
+				typeName = typeName.replace('0', '');
+				typeName = typeName.replace('1', '');
+				typeName = typeName.replace('2', '');
+				typeName = typeName.replace('3', '');
+				typeName = typeName.replace('4', '');
+				typeName = typeName.replace('5', '');
+				typeName = typeName.replace('6', '');
+				typeName = typeName.replace('7', '');
+				typeName = typeName.replace('8', '');
+				typeName = typeName.replace('9', '');
+
+				if (!types.contains(typeName))
+				{
+					trace('Found balloon type: $typeName');
+					types.push(typeName);
+				}
 			}
 		}
+
+		targetType = types[FlxG.random.int(0, types.length - 1)];
+		trace('Target Balloon Type: $targetType');
 	}
 
 	public function loadAsset()
@@ -65,6 +84,10 @@ class Balloon extends FlxSprite
 	public function useRandomType()
 	{
 		animation.play(animation.getNameList()[FlxG.random.int(0, animation.getNameList().length - 1)]);
+
 		type = animation.name;
+
+		if (type == targetType && FlxG.random.bool(1))
+			useRandomType();
 	}
 }
