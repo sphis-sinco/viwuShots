@@ -5,6 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -24,6 +25,7 @@ class PlayState extends FlxState
 	public var maxBalloons:Int = 5;
 
 	public var score:Int = 0;
+	public var scoreText:FlxText;
 
 	override public function create()
 	{
@@ -49,11 +51,16 @@ class PlayState extends FlxState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, .2);
+
+		scoreText = new FlxText(0, 0, FlxG.width, "Score: gay", 32);
+		scoreText.alignment = 'center';
+		add(scoreText);
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		scoreText.text = 'Score: $score';
 
 		if (FlxG.keys.justReleased.F && !focusMode)
 		{
