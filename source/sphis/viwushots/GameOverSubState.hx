@@ -52,6 +52,10 @@ class GameOverSubState extends FlxSubState
 	{
 		super.update(elapsed);
 
+		if (FlxG.mouse.overlaps(retry))
+			retry.scale.set(.6, .6);
+		else
+			retry.scale.set(.5, .5);
 		if (FlxG.mouse.justReleased && FlxG.mouse.overlaps(retry))
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
