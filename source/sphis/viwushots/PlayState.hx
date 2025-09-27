@@ -8,8 +8,6 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import flixel.util.FlxSort;
-import funkin.util.SortUtil;
 
 class PlayState extends FlxState
 {
@@ -100,10 +98,7 @@ class PlayState extends FlxState
 			balloon.storage.speedY = FlxG.random.float(.01, .5);
 			balloon.storage.maxHeight = FlxG.random.float(25, 100);
 
-			balloon.zIndex = FlxG.random.int(0, 1000);
-
 			balloonGroup.add(balloon);
-			balloonGroup.sort(SortUtil.byZIndex, FlxSort.DESCENDING);
 		}
 
 		for (balloon in balloonGroup.members)
