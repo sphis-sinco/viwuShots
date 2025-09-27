@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="targets.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="target blue0000" x="4" y="4" width="181" height="116"/>
+	<SubTexture name="target purple0000" x="193" y="4" width="203" height="105"/>
+	<SubTexture name="target red0000" x="4" y="128" width="172" height="111"/>
+	<SubTexture name="target white0000" x="184" y="128" width="169" height="101"/>
+</TextureAtlas>
