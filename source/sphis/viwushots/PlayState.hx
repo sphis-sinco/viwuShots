@@ -243,11 +243,6 @@ class PlayState extends FlxState
 					// balloonPopFaded.play();
 				}
 
-				balloon.color = FlxColor.WHITE;
-
-				if (focusMode && !shot && FlxG.mouse.overlaps(balloon))
-					balloon.color = FlxColor.RED;
-
 				if (focusMode && !shot && FlxG.mouse.justReleased && FlxG.mouse.overlaps(balloon))
 				{
 					shot = true;
