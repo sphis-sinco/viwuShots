@@ -17,11 +17,17 @@ class PlayState extends FlxState
 
 	public var camFollow:FlxObject;
 
+	public var balloon:Balloon;
+
 	override public function create()
 	{
 		super.create();
 
 		add(new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633')).screenCenter());
+
+		balloon = new Balloon();
+		add(balloon);
+		balloon.screenCenter();
 
 		viwu = new Viwu();
 		add(viwu);
