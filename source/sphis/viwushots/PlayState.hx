@@ -106,6 +106,12 @@ class PlayState extends FlxState
 			balloon.x += balloon.storage.speedX;
 
 			balloon.y = balloon.storage.savedY + Math.sin(balloon.storage.time + balloon.storage.speedY) * balloon.storage.maxHeight;
+
+			if (balloon.x > FlxG.width + balloon.width * 2)
+			{
+				balloonGroup.members.remove(balloon);
+				balloon.destroy();
+			}
 		}
 	}
 }
