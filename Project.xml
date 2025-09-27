@@ -49,6 +49,9 @@
 	<!--<haxelib name="nape-haxe4" />-->
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
+	 
+	<!-- zIndex with a macro cause we are the cool kids now. -->
+	<haxeflag name="--macro" value="addMetadata('@:build(funkin.util.macro.FlxMacro.buildFlxBasic())', 'flixel.FlxBasic')" />
 
 	<!--Remove the legacy health system-->
 	<haxedef name="FLX_NO_HEALTH" />
