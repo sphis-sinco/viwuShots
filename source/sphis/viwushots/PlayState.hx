@@ -90,23 +90,20 @@ class PlayState extends FlxState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, .2);
-
-		Application.current.onExit.add(l ->
-		{
-			if (score > (FlxG.save.data.highscore ?? 0))
-			{
-				try
-				{
-					FlxG.save.data.highscore = score;
-				}
-				catch (_) {}
-			}
-		}, false, 1);
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (score > (FlxG.save.data.highscore ?? 0))
+		{
+			try
+			{
+				FlxG.save.data.highscore = score;
+			}
+			catch (_) {}
+		}
 
 		scoreText.text = 'Score:\n$score\nHighscore:\n${FlxG.save.data.highscore ?? 0}';
 		scoreText.screenCenter();

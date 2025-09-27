@@ -9,8 +9,6 @@ import flixel.util.FlxColor;
 
 class GameOverSubState extends FlxSubState
 {
-	public var scoreText:FlxText;
-
 	public var gameover:FlxSprite;
 	public var retry:FlxSprite;
 
@@ -48,8 +46,6 @@ class GameOverSubState extends FlxSubState
 
 		gameover.scrollFactor.set();
 		retry.scrollFactor.set();
-
-		scoreText = new FlxText(PlayState.instance.floor.x, PlayState.instance.floor.y, 'Score: ${PlayState.instance.score}');
 	}
 
 	override function update(elapsed:Float)
