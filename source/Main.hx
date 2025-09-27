@@ -22,6 +22,8 @@ class Main extends Sprite
 
 		#if ViwuShootAnimationOffsetsState
 		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
+		#elseif ViwuGameoverAnimationOffsetsState
+		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuGameoverAnimationOffsetsState));
 		#else
 		addChild(new FlxGame(0, 0, sphis.viwushots.PlayState));
 		#end
