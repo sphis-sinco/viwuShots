@@ -92,6 +92,16 @@ class PlayState extends FlxState
 		{
 			maxBalloons = 0;
 			vinylStop.play();
+			focusMode = false;
+
+			if (viwu.animation.name != 'shoot')
+				viwu.animation.play(viwu.animation.name, false, true, viwu.animation.frameIndex);
+
+			viwu.animation.onFinish.add(animName ->
+			{
+				viwu.animation.play('idle');
+				viwu.animation.onFinish.removeAll();
+			});
 
 			FlxTween.tween(background, {alpha: .25}, 1, {
 				startDelay: .204
@@ -114,7 +124,7 @@ class PlayState extends FlxState
 			});
 		}
 
-		if (FlxG.keys.justReleased.F && !focusMode)
+		if (maxBalloons > 0 && FlxG.keys.justReleased.F && !focusMode)
 		{
 			focusMode = true;
 			viwu.animation.play('focus');
@@ -122,7 +132,7 @@ class PlayState extends FlxState
 			FlxTween.cancelTweensOf(FlxG.camera);
 			FlxTween.tween(FlxG.camera, {zoom: 1.25}, .25, {ease: FlxEase.sineIn});
 		}
-		else if (FlxG.keys.justReleased.F && focusMode)
+		else if (maxBalloons > 0 && FlxG.keys.justReleased.F && focusMode)
 		{
 			focusMode = false;
 			viwu.animation.play('unfocus');
@@ -140,7 +150,7 @@ class PlayState extends FlxState
 		}
 		else
 		{
-			if (score > -1000)
+			if (maxBalloons > 0)
 				camFollow.setPosition(FlxG.width / 2, FlxG.height / 2);
 		}
 
