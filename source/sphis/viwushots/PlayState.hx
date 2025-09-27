@@ -18,6 +18,8 @@ class PlayState extends FlxState
 	{
 		super.create();
 
+		add(new FlxSprite().makeGraphic(FlxG.width, FlxG.height, 0x996633));
+
 		viwu = new Viwu();
 		add(viwu);
 
