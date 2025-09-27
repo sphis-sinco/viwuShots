@@ -63,6 +63,15 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
+		if (score > (FlxG.save.data.highscore ?? 0))
+		{
+			try
+			{
+				FlxG.save.data.highscore = score;
+			}
+			catch (_) {}
+		}
+
 		scoreText.text = 'Score:\n$score\nHighscore:\n${FlxG.save.data.highscore ?? 0}';
 		scoreText.screenCenter();
 
