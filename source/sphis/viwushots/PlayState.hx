@@ -88,7 +88,7 @@ class PlayState extends FlxState
 		scoreText.text = 'Score:\n$score\nHighscore:\n${FlxG.save.data.highscore ?? 0}';
 		scoreText.screenCenter();
 
-		if (score < -1000)
+		if (score < -1000 && maxBalloons > 0)
 		{
 			maxBalloons = 0;
 			vinylStop.play();
@@ -106,10 +106,10 @@ class PlayState extends FlxState
 				});
 			}
 
-			FlxTween.tween(camFollow, {x: 0}, 1, {
+			FlxTween.tween(camFollow, {x: FlxG.width / 2 - 320}, 4, {
 				startDelay: .204
 			});
-			FlxTween.tween(FlxG.camera, {zoom: 1.5}, 1, {
+			FlxTween.tween(FlxG.camera, {zoom: 1.3}, 4, {
 				startDelay: .204
 			});
 		}
