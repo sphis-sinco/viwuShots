@@ -207,7 +207,7 @@ class PlayState extends FlxState
 					balloonGroup.members.remove(balloon);
 					balloon.destroy();
 
-					balloonPopFaded.play();
+					// balloonPopFaded.play();
 				}
 
 				balloon.color = FlxColor.WHITE;
