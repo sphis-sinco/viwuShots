@@ -12,9 +12,12 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
+import lime.app.Application;
 
 class PlayState extends FlxState
 {
+	public static var instance:PlayState;
+
 	public var viwu:Viwu;
 	public var floor:FlxSprite;
 
@@ -42,6 +45,10 @@ class PlayState extends FlxState
 
 		if (fadeIn)
 			FlxG.camera.flash(FlxColor.BLACK, 1);
+
+		if (instance != null)
+			instance = null;
+		instance = this;
 	}
 
 	override public function create()
@@ -83,20 +90,23 @@ class PlayState extends FlxState
 		add(camFollow);
 
 		FlxG.camera.follow(camFollow, LOCKON, .2);
+
+		Application.current.onExit.add(l ->
+		{
+			if (score > (FlxG.save.data.highscore ?? 0))
+			{
+				try
+				{
+					FlxG.save.data.highscore = score;
+				}
+				catch (_) {}
+			}
+		}, false, 1);
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		if (score > (FlxG.save.data.highscore ?? 0))
-		{
-			try
-			{
-				FlxG.save.data.highscore = score;
-			}
-			catch (_) {}
-		}
 
 		scoreText.text = 'Score:\n$score\nHighscore:\n${FlxG.save.data.highscore ?? 0}';
 		scoreText.screenCenter();
