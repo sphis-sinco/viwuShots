@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	{
 		super.create();
 
-		add(new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.fromString('0x996633')));
+		add(new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633')).screenCenter());
 
 		viwu = new Viwu();
 		add(viwu);
@@ -63,7 +63,7 @@ class PlayState extends FlxState
 
 		if (focusMode)
 		{
-			camFollow.setPosition(FlxG.width - FlxG.mouse.x, FlxG.height - FlxG.mouse.y);
+			camFollow.setPosition(FlxG.width - FlxG.mouse.x * 1.5, FlxG.height - FlxG.mouse.y * 2);
 		}
 		else
 		{
