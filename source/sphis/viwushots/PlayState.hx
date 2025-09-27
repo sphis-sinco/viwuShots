@@ -256,13 +256,9 @@ class PlayState extends FlxState
 						}
 					});
 
-					viwu.animation.onFrameChange.add((animName, frameNumber, frameIndex) ->
+					FlxTimer.wait((1 / 24) * 8, () ->
 					{
-						if (animName == 'shoot' && frameNumber > 8)
-						{
-							shot = false;
-							viwu.animation.onFrameChange.removeAll();
-						}
+						shot = false;
 					});
 				}
 			}
