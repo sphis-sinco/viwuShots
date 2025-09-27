@@ -120,10 +120,9 @@ class PlayState extends FlxState
 				FlxTween.tween(balloon, {alpha: .25}, 1, {
 					startDelay: .204
 				});
-				/**
-					FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0}, 1, {
+				FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0}, 1, {
 					startDelay: .204
-				}); **/
+				});
 			}
 
 			FlxTween.tween(camFollow, {x: FlxG.width / 2 - 320}, 4, {
