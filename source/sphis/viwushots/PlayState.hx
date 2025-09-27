@@ -104,39 +104,58 @@ class PlayState extends FlxState
 
 		for (balloon in balloonGroup.members)
 		{
-			balloon.storage.time += elapsed;
-			balloon.x += balloon.storage.speedX;
-
-			balloon.y = balloon.storage.savedY + Math.sin(balloon.storage.time + balloon.storage.speedY) * balloon.storage.maxHeight;
-			balloonGroup.sort(FlxSort.byY);
-
-			if (balloon.x > FlxG.width + balloon.width * 2)
+			try
 			{
-				balloonGroup.members.remove(balloon);
-				balloon.destroy();
-			}
+				balloon.storage.time += elapsed;
+				balloon.x += balloon.storage.speedX;
 
-			if (focusMode && !shot && FlxG.mouse.justReleased && FlxG.mouse.overlaps(balloon))
-			{
-				shot = true;
+				balloon.y = balloon.storage.savedY + Math.sin(balloon.storage.time + balloon.storage.speedY) * balloon.storage.maxHeight;
+				balloonGroup.sort(FlxSort.byY);
 
-				balloonGroup.members.remove(balloon);
-				balloon.destroy();
-
-				if (FlxG.camera.zoom != 1.25)
+				if (balloon.x > FlxG.width + balloon.width * 2)
 				{
-					FlxTween.cancelTweensOf(FlxG.camera);
-					FlxG.camera.zoom = 1.25;
+					balloonGroup.members.remove(balloon);
+					balloon.destroy();
 				}
 
-				viwu.animation.play('shoot');
+				balloon.color = FlxColor.WHITE;
 
-				viwu.animation.onFinish.add(animName ->
+				if (focusMode && !shot && FlxG.mouse.overlaps(balloon))
+					balloon.color = FlxColor.RED;
+
+				if (focusMode && !shot && FlxG.mouse.justReleased && FlxG.mouse.overlaps(balloon))
 				{
-					shot = false;
+					shot = true;
 
-					viwu.animation.onFinish.removeAll();
-				});
+					balloonGroup.members.remove(balloon);
+					balloon.destroy();
+
+					if (FlxG.camera.zoom != 1.25)
+					{
+						FlxTween.cancelTweensOf(FlxG.camera);
+						FlxG.camera.zoom = 1.25;
+					}
+
+					viwu.animation.play('shoot');
+					FlxTween.tween(FlxG.camera, {zoom: 1.15}, .1, {
+						ease: FlxEase.bounceInOut,
+						onComplete: t ->
+						{
+							FlxTween.tween(FlxG.camera, {zoom: 1.25}, .1, {ease: FlxEase.sineIn});
+						}
+					});
+
+					viwu.animation.onFinish.add(animName ->
+					{
+						shot = false;
+
+						viwu.animation.onFinish.removeAll();
+					});
+				}
+			}
+			catch (e)
+			{
+				trace(e);
 			}
 		}
 	}
