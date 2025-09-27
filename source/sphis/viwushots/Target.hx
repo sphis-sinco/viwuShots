@@ -29,6 +29,8 @@ class Target extends FlxSprite
 		{
 			var splitEntry = entry.split(' ');
 			positions.set(splitEntry[0], new FlxPoint(Std.parseFloat(splitEntry[1]), Std.parseFloat(splitEntry[2])));
+
+			trace('Got offsets for balloon target: ${splitEntry[0]} ${positions.get(splitEntry[0])}');
 		}
 	}
 
