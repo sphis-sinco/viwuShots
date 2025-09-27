@@ -48,7 +48,6 @@ class PlayState extends FlxState
 		add(background);
 
 		scoreText = new FlxText(0, 0, 0, "Score: gay", 64);
-		scoreText.scrollFactor.set();
 		scoreText.alignment = "center";
 		scoreText.alpha = .5;
 		add(scoreText);
