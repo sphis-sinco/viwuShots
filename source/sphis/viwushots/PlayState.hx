@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -17,7 +18,8 @@ class PlayState extends FlxState
 
 	public var camFollow:FlxObject;
 
-	public var balloon:Balloon;
+	public var balloonGroup:FlxTypedGroup<Balloon>;
+	public var maxBalloons:Int = 50;
 
 	override public function create()
 	{
@@ -25,9 +27,8 @@ class PlayState extends FlxState
 
 		add(new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633')).screenCenter());
 
-		balloon = new Balloon();
-		add(balloon);
-		balloon.screenCenter();
+		balloonGroup = new FlxTypedGroup<Balloon>();
+		add(balloonGroup);
 
 		viwu = new Viwu();
 		add(viwu);
@@ -80,5 +81,31 @@ class PlayState extends FlxState
 		}
 
 		FlxG.watch.addQuick('camFollow pos', camFollow.getPosition());
+
+		if (balloonGroup.length < maxBalloons)
+		{
+			var balloon = new Balloon();
+			balloon.screenCenter();
+			balloon.x = -FlxG.width - balloon.width;
+
+			balloon.x += FlxG.random.float(-10, 10);
+			balloon.y += FlxG.random.float(-10, 10);
+
+			balloon.storage.savedY = balloon.y;
+			balloon.storage.time = 0;
+			balloon.storage.speedX = 2;
+			balloon.storage.speedY = 0.1;
+			balloon.storage.maxHeight = 50;
+
+			balloonGroup.add(balloon);
+		}
+
+		for (balloon in balloonGroup.members)
+		{
+			balloon.storage.time += elapsed;
+			balloon.x += balloon.storage.speedX;
+
+			balloon.y = balloon.storage.savedY + Math.sin(balloon.storage.time + balloon.storage.speedY) * balloon.storage.maxHeight;
+		}
 	}
 }

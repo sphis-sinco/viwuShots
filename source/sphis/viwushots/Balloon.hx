@@ -16,6 +16,8 @@ class Balloon extends FlxSprite
 
 	public var type:String;
 
+	public var storage:Dynamic = {};
+
 	override public function new()
 	{
 		super(0, 0);
