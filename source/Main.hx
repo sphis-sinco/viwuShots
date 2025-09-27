@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxSprite;
+import flixel.system.debug.console.ConsoleUtil;
 import lime.app.Application;
 import openfl.display.Sprite;
 import sphis.viwushots.Balloon;
@@ -35,6 +36,20 @@ class Main extends Sprite
 		#if randomSave
 		FlxG.save.data.highscore = FlxG.random.int(0, Std.int(300 * FlxG.random.float(0, 10)));
 		#end
+
+		ConsoleUtil.registerFunction('New Target', () ->
+		{
+			Balloon.initTypes();
+			FlxG.resetGame();
+		});
+
+		ConsoleUtil.registerFunction('ResetGame', () ->
+		{
+			Balloon.initTypes();
+			Target.getPositions();
+
+			FlxG.resetGame();
+		});
 
 		#if ViwuShootAnimationOffsetsState
 		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
