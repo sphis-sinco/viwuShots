@@ -103,7 +103,7 @@ class PlayState extends FlxState
 			balloon.zIndex = FlxG.random.int(0, 1000);
 
 			balloonGroup.add(balloon);
-			balloonGroup.sort(SortUtil.byZIndex, FlxSort.DESCENDING);
+			balloonGroup.sort(SortUtil.byZIndexBalloon, FlxSort.ASCENDING);
 		}
 
 		for (balloon in balloonGroup.members)
