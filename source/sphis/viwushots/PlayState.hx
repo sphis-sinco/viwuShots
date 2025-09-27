@@ -152,6 +152,9 @@ class PlayState extends FlxState
 				{
 					shot = true;
 
+					FlxG.sound.play('assets/sounds/balloon-pop.wav');
+					FlxG.sound.play('assets/sounds/pistol.wav');
+
 					if (balloon.type == Balloon.targetType)
 						score += 300;
 					else
