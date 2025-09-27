@@ -8,6 +8,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxSort;
 
 class PlayState extends FlxState
 {
@@ -94,7 +95,7 @@ class PlayState extends FlxState
 
 			balloon.storage.savedY = balloon.y;
 			balloon.storage.time = elapsed * FlxG.random.int(0, 10);
-			balloon.storage.speedX = FlxG.random.float(.5, 4) * FlxG.random.float(1, 10);
+			balloon.storage.speedX = FlxG.random.float(.5, 4) * FlxG.random.float(9, 10);
 			balloon.storage.speedY = FlxG.random.float(.01, .5);
 			balloon.storage.maxHeight = FlxG.random.float(25, 100);
 
@@ -107,6 +108,7 @@ class PlayState extends FlxState
 			balloon.x += balloon.storage.speedX;
 
 			balloon.y = balloon.storage.savedY + Math.sin(balloon.storage.time + balloon.storage.speedY) * balloon.storage.maxHeight;
+			balloonGroup.sort(FlxSort.byY);
 
 			if (balloon.x > FlxG.width + balloon.width * 2)
 			{
@@ -125,8 +127,14 @@ class PlayState extends FlxState
 
 				viwu.animation.onFinish.add(animName ->
 				{
-					shot = false;
+					viwu.animation.play('focus');
+
 					viwu.animation.onFinish.removeAll();
+					viwu.animation.onFinish.add(animName ->
+					{
+						shot = false;
+						viwu.animation.onFinish.removeAll();
+					});
 				});
 			}
 		}
