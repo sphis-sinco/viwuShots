@@ -11,6 +11,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
+import flixel.util.FlxTimer;
 
 class PlayState extends FlxState
 {
@@ -121,6 +122,11 @@ class PlayState extends FlxState
 			});
 			FlxTween.tween(FlxG.camera, {zoom: 1.3}, 4, {
 				startDelay: .204
+			});
+
+			FlxTimer.wait(2, () ->
+			{
+				viwu.animation.play('results-bad');
 			});
 		}
 

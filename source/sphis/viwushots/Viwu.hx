@@ -24,11 +24,13 @@ class Viwu extends FlxSprite
 		animation.addByPrefix('focus', 'viwu animation focus', 24, false);
 		animation.addByPrefix('unfocus', 'viwu animation unfocus', 24, false);
 		animation.addByPrefix('shoot', 'viwu animation shoot', 24, false);
+		animation.addByPrefix('results-bad', 'viwu animation results bad', 24, false);
 
 		offsets.set('idle', new FlxPoint(0, 0));
 		offsets.set('focus', new FlxPoint(0, 0));
 		offsets.set('unfocus', new FlxPoint(0, 0));
 		offsets.set('shoot', new FlxPoint(31, 46));
+		offsets.set('results-bad', new FlxPoint(0, 0));
 
 		animation.playCallback = animName ->
 		{
