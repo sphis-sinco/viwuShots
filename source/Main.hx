@@ -26,7 +26,7 @@ class Main extends Sprite
 		});
 
 		if (FlxG.save.data.highscore == null)
-			FlxG.save.data.highscore = #if randomSave FlxG.random.int(0, Std.parseInt(300 * FlxG.random.float(0, 10))) #else 0 #end;
+			FlxG.save.data.highscore = #if randomSave FlxG.random.int(0, Std.int(300 * FlxG.random.float(0, 10))) #else 0 #end;
 
 		#if ViwuShootAnimationOffsetsState
 		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
