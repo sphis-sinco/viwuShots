@@ -31,6 +31,7 @@ class PlayState extends FlxState
 
 	public var vinylStop:FlxSound;
 	public var balloonPop:FlxSound;
+	public var balloonPopFaded:FlxSound;
 	public var pistol:FlxSound;
 
 	public var background:FlxSprite;
@@ -40,6 +41,10 @@ class PlayState extends FlxState
 		super.create();
 
 		balloonPop = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
+
+		balloonPopFaded = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
+		balloonPopFaded.volume = .25;
+
 		pistol = new FlxSound().loadStream('assets/sounds/pistol.wav');
 		vinylStop = new FlxSound().loadStream('assets/sounds/vinyl-stop.wav');
 
@@ -115,9 +120,10 @@ class PlayState extends FlxState
 				FlxTween.tween(balloon, {alpha: .25}, 1, {
 					startDelay: .204
 				});
-				FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0}, 1, {
+				/**
+					FlxTween.tween(balloon.storage, {speedX: 0, speedY: 0}, 1, {
 					startDelay: .204
-				});
+				}); **/
 			}
 
 			FlxTween.tween(camFollow, {x: FlxG.width / 2 - 320}, 4, {
@@ -195,11 +201,13 @@ class PlayState extends FlxState
 
 				if (balloon.x > FlxG.width + balloon.width * 2)
 				{
-					if (balloon.type == Balloon.targetType)
+					if (balloon.type == Balloon.targetType && maxBalloons > 0)
 						score -= 50;
 
 					balloonGroup.members.remove(balloon);
 					balloon.destroy();
+
+					balloonPopFaded.play();
 				}
 
 				balloon.color = FlxColor.WHITE;
