@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxSprite;
+import lime.app.Application;
 import openfl.display.Sprite;
 import sphis.viwushots.Balloon;
 
@@ -16,6 +17,11 @@ class Main extends Sprite
 		Balloon.initTypes();
 
 		FlxG.save.bind('Viwu Shots', 'Sphis');
+
+		Application.current.onExit.add(l ->
+		{
+			FlxG.save.flush();
+		});
 
 		if (FlxG.save.data.highscore == null)
 			FlxG.save.data.highscore = 0;
