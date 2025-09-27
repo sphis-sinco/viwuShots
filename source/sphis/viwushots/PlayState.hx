@@ -125,7 +125,8 @@ class PlayState extends FlxState
 			vinylStop.play();
 			focusMode = false;
 
-			if (viwu.animation.name != 'shoot')
+			var noReverse = ['shoot', 'unfocus', 'idle'];
+			if (!noReverse.contains(viwu.animation.name))
 				viwu.animation.reverse();
 
 			viwu.animation.onFinish.add(animName ->
