@@ -30,7 +30,7 @@ class Viwu extends FlxSprite
 		offsets.set('focus', new FlxPoint(0, 0));
 		offsets.set('unfocus', new FlxPoint(0, 0));
 		offsets.set('shoot', new FlxPoint(31, 46));
-		offsets.set('results-bad', new FlxPoint(0, 0));
+		offsets.set('results-bad', new FlxPoint(10, 34));
 
 		animation.playCallback = animName ->
 		{
