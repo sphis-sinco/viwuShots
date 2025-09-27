@@ -39,5 +39,23 @@ class PlayState extends FlxState
 			viwu.animation.play('focus', false, false, 8);
 			viwu.animation.pause();
 		}
+
+		if (viwu.animation.name == 'shoot')
+		{
+			var offsets = viwu.offsets.get('shoot');
+
+			if (FlxG.keys.justReleased.LEFT)
+				offsets.x -= 1;
+			if (FlxG.keys.justReleased.RIGHT)
+				offsets.x += 1;
+			if (FlxG.keys.justReleased.UP)
+				offsets.y -= 1;
+			if (FlxG.keys.justReleased.RIGHT)
+				offsets.y += 1;
+
+			viwu.offsets.set('shoot', offsets);
+		}
+
+		FlxG.watch.addQuick('Viwu shoot offsets', viwu.offsets.get('shoot'));
 	}
 }
