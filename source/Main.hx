@@ -13,9 +13,9 @@ class Main extends Sprite
 		FlxSprite.defaultAntialiasing = true;
 
 		#if ViwuShootAnimationOffsetsState
-		addChild(new FlxGame(0, 0, viwu.viwushots.ViwuShootAnimationOffsetsState));
+		addChild(new FlxGame(0, 0, sphis.viwushots.ViwuShootAnimationOffsetsState));
 		#else
-		addChild(new FlxGame(0, 0, viwu.viwushots.PlayState));
+		addChild(new FlxGame(0, 0, sphis.viwushots.PlayState));
 		#end
 	}
 }

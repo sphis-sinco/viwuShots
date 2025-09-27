@@ -1,4 +1,4 @@
-package viwu.viwushots;
+package sphis.viwushots;
 
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
