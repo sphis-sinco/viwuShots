@@ -44,7 +44,7 @@ class Target extends FlxSprite
 		frames = FlxAtlasFrames.fromSparrow('assets/images/targets.png', 'assets/images/targets.xml');
 
 		for (type in Balloon.types)
-			animation.addByPrefix(type, 'balloon $type');
+			animation.addByPrefix(type, 'target $type');
 
 		animation.play(Balloon.targetType);
 	}
