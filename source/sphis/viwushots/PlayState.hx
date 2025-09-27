@@ -146,7 +146,10 @@ class PlayState extends FlxState
 				viwu.animation.play('results-bad');
 				persistentUpdate = true;
 
-				openSubState(new GameOverSubState());
+				FlxTimer.wait(2.5, () ->
+				{
+					openSubState(new GameOverSubState());
+				});
 			});
 		}
 

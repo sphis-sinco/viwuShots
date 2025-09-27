@@ -23,7 +23,7 @@ class GameOverSubState extends FlxSubState
 		retry.loadGraphic('assets/images/retry.png');
 		retry.alpha = 0;
 
-		gameover.scale.set(.5, .5);
+		gameover.scale.set(.95, .95);
 		gameover.updateHitbox();
 
 		retry.scale.set(.5, .5);
@@ -38,6 +38,11 @@ class GameOverSubState extends FlxSubState
 		gameover.screenCenter();
 		retry.screenCenter();
 
+		gameover.x += gameover.width * .75;
+		gameover.y -= gameover.height * .45;
+		retry.x += retry.width * 1.25;
+		retry.y += retry.height * 1.25;
+
 		gameover.scrollFactor.set();
 		retry.scrollFactor.set();
 	}
@@ -50,7 +55,7 @@ class GameOverSubState extends FlxSubState
 		{
 			FlxG.camera.fade(FlxColor.BLACK, 1, false, () ->
 			{
-				FlxG.switchState(() -> new PlayState());
+				FlxG.switchState(() -> new PlayState(true));
 			});
 		}
 	}
