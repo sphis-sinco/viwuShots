@@ -1,5 +1,6 @@
 package sphis.viwushots;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.util.FlxColor;
@@ -44,6 +45,9 @@ class Balloon extends FlxSprite
 		for (type in types)
 			animation.addByPrefix(type, 'balloon $type');
 
-		animation.play(animation.getNameList()[0]);
+		useRandomType();
 	}
+
+	public function useRandomType()
+		animation.play(animation.getNameList()[FlxG.random.int(0, animation.getNameList().length - 1)]);
 }
