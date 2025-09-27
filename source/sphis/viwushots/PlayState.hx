@@ -106,6 +106,10 @@ class PlayState extends FlxState
 			FlxTween.tween(background, {alpha: .25}, 1, {
 				startDelay: .204
 			});
+
+			FlxTween.tween(scoreText, {alpha: 0}, 1, {
+				startDelay: .204
+			});
 			for (balloon in balloonGroup.members)
 			{
 				FlxTween.tween(balloon, {alpha: .25}, 1, {
