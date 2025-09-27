@@ -30,7 +30,10 @@ class PlayState extends FlxState
 		super.update(elapsed);
 
 		if (FlxG.keys.justReleased.S)
+		{
 			viwu.animation.play('shoot');
+			viwu.animation.pause();
+		}
 		if (FlxG.keys.justReleased.F)
 			viwu.animation.play('focus');
 	}
