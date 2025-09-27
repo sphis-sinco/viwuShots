@@ -29,15 +29,13 @@ class Viwu extends FlxSprite
 		offsets.set('focus', new FlxPoint(0, 0));
 		offsets.set('unfocus', new FlxPoint(0, 0));
 		offsets.set('shoot', new FlxPoint(30, 45));
-	}
 
-	override function update(elapsed:Float)
-	{
-		super.update(elapsed);
-
-		if (offsets.exists(animation.name))
-			offset.set(offsets.get(animation.name).x, offsets.get(animation.name).y);
-		else
-			offset.set();
+		animation.playCallback = animName ->
+		{
+			if (offsets.exists(animName))
+				offset.set(offsets.get(animName).x, offsets.get(animName).y);
+			else
+				offset.set();
+		}
 	}
 }
