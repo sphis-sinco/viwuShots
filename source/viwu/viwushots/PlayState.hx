@@ -1,5 +1,6 @@
 package viwu.viwushots;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.util.FlxColor;
 
@@ -19,10 +20,18 @@ class PlayState extends FlxState
 
 		viwu = new Viwu();
 		add(viwu);
+
+		viwu.animation.play('focus');
+		viwu_ghost.animation.play('focus');
 	}
 
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (FlxG.keys.justReleased.S)
+			viwu.animation.play('shoot');
+		if (FlxG.keys.justReleased.F)
+			viwu.animation.play('focus');
 	}
 }
