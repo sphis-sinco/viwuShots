@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	public var camFollow:FlxObject;
 
 	public var balloonGroup:FlxTypedGroup<Balloon>;
-	public var maxBalloons:Int = 50;
+	public var maxBalloons:Int = 5;
 
 	override public function create()
 	{
@@ -95,7 +95,7 @@ class PlayState extends FlxState
 
 			balloon.storage.savedY = balloon.y;
 			balloon.storage.time = elapsed * FlxG.random.int(0, 10);
-			balloon.storage.speedX = FlxG.random.float(.5, 4) * FlxG.random.float(9, 10);
+			balloon.storage.speedX = FlxG.random.float(.5, 4) * FlxG.random.float(1, 5);
 			balloon.storage.speedY = FlxG.random.float(.01, .5);
 			balloon.storage.maxHeight = FlxG.random.float(25, 100);
 
@@ -122,6 +122,12 @@ class PlayState extends FlxState
 
 				balloonGroup.members.remove(balloon);
 				balloon.destroy();
+
+				if (FlxG.camera.zoom != 1.25)
+				{
+					FlxTween.cancelTweensOf(FlxG.camera);
+					FlxG.camera.zoom = 1.25;
+				}
 
 				viwu.animation.play('shoot');
 
