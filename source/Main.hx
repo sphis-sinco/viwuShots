@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import lime.app.Application;
 import openfl.display.Sprite;
 import sphis.viwushots.Balloon;
+import sphis.viwushots.Target;
 
 class Main extends Sprite
 {
@@ -15,6 +16,7 @@ class Main extends Sprite
 
 		FlxSprite.defaultAntialiasing = true;
 		Balloon.initTypes();
+		Target.getPositions();
 
 		FlxG.save.bind('Viwu Shots', 'Sphis');
 
