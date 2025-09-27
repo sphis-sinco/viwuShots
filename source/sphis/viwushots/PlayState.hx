@@ -61,7 +61,7 @@ class PlayState extends FlxState
 			FlxTween.tween(FlxG.camera, {zoom: 1}, .25, {ease: FlxEase.sineOut});
 		}
 
-		if (focusMode)
+		if (focusMode && #if camFollowShit true #else false #end)
 		{
 			camFollow.setPosition(FlxG.width - FlxG.mouse.getViewPosition().x * 2, FlxG.height - FlxG.mouse.getViewPosition().y * 2);
 
