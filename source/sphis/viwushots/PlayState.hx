@@ -1,6 +1,7 @@
 package sphis.viwushots;
 
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.tweens.FlxEase;
@@ -13,6 +14,8 @@ class PlayState extends FlxState
 	public var floor:FlxSprite;
 
 	public var focusMode:Bool = false;
+
+	public var camFollow:FlxObject;
 
 	override public function create()
 	{
@@ -30,6 +33,11 @@ class PlayState extends FlxState
 		viwu.setPosition(-59.7, 65.2);
 
 		FlxG.camera.zoom = 1;
+
+		camFollow = new FlxObject();
+		add(camFollow);
+
+		FlxG.camera.follow(camFollow, LOCKON, .2);
 	}
 
 	override public function update(elapsed:Float)
@@ -52,5 +60,16 @@ class PlayState extends FlxState
 			FlxTween.cancelTweensOf(FlxG.camera);
 			FlxTween.tween(FlxG.camera, {zoom: 1}, .25, {ease: FlxEase.sineOut});
 		}
+
+		if (focusMode)
+		{
+			camFollow.setPosition(FlxG.width - FlxG.mouse.x, FlxG.height - FlxG.mouse.y);
+		}
+		else
+		{
+			camFollow.setPosition(FlxG.width / 2, FlxG.height / 2);
+		}
+
+		FlxG.watch.addQuick('camFollow pos', camFollow.getPosition());
 	}
 }
