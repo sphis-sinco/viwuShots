@@ -160,7 +160,7 @@ class PlayState extends FlxState
 					shot = true;
 
 					balloonPop.play();
-					pistol.play();
+					// pistol.play();
 
 					if (balloon.type == Balloon.targetType)
 						score += 300;
