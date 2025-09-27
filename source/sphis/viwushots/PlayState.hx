@@ -35,6 +35,7 @@ class PlayState extends FlxState
 
 		scoreText = new FlxText(0, 0, 0, "Score: gay", 64);
 		scoreText.scrollFactor.set();
+		scoreText.alignment = "center";
 		scoreText.alpha = .5;
 		add(scoreText);
 
@@ -62,7 +63,7 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 
-		scoreText.text = '$score';
+		scoreText.text = 'Score:\n$score\nHighscore:\n${FlxG.save.data.highscore ?? 0}';
 		scoreText.screenCenter();
 
 		if (FlxG.keys.justReleased.F && !focusMode)
