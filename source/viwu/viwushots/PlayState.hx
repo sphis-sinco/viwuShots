@@ -35,6 +35,10 @@ class PlayState extends FlxState
 			viwu.animation.pause();
 		}
 		if (FlxG.keys.justReleased.F)
+		{
 			viwu.animation.play('focus');
+			viwu.animation.pause();
+			viwu.animation.frameIndex = 8;
+		}
 	}
 }
