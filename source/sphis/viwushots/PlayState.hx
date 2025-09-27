@@ -92,10 +92,10 @@ class PlayState extends FlxState
 			balloon.y += FlxG.random.float(-10, 10);
 
 			balloon.storage.savedY = balloon.y;
-			balloon.storage.time = 0;
-			balloon.storage.speedX = 2;
-			balloon.storage.speedY = 0.1;
-			balloon.storage.maxHeight = 50;
+			balloon.storage.time = elapsed * FlxG.random.int(0, 10);
+			balloon.storage.speedX = FlxG.random.float(0, 4) * FlxG.random.int(1, 10);
+			balloon.storage.speedY = FlxG.random.float(0, .5);
+			balloon.storage.maxHeight = FlxG.random.float(25, 100);
 
 			balloonGroup.add(balloon);
 		}
