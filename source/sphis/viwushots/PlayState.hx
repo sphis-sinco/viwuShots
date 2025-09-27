@@ -5,6 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.sound.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -27,9 +28,15 @@ class PlayState extends FlxState
 	public var score:Int = 0;
 	public var scoreText:FlxText;
 
+	public var balloonPop:FlxSound;
+	public var pistol:FlxSound;
+
 	override public function create()
 	{
 		super.create();
+
+		balloonPop = new FlxSound().loadStream('assets/sounds/balloon-pop.wav');
+		pistol = new FlxSound().loadStream('assets/sounds/pistol.wav');
 
 		add(new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.fromString('0x996633')).screenCenter());
 
@@ -152,8 +159,8 @@ class PlayState extends FlxState
 				{
 					shot = true;
 
-					FlxG.sound.play('assets/sounds/balloon-pop.wav');
-					FlxG.sound.play('assets/sounds/pistol.wav');
+					balloonPop.play();
+					pistol.play();
 
 					if (balloon.type == Balloon.targetType)
 						score += 300;
