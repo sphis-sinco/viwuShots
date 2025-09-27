@@ -100,7 +100,7 @@ class PlayState extends FlxState
 			focusMode = false;
 
 			if (viwu.animation.name != 'shoot')
-				viwu.animation.play(viwu.animation.name, false, true, viwu.animation.frameIndex);
+				viwu.animation.reverse();
 
 			viwu.animation.onFinish.add(animName ->
 			{
@@ -134,6 +134,7 @@ class PlayState extends FlxState
 
 			FlxTimer.wait(2, () ->
 			{
+				viwu.animation.onFinish.removeAll();
 				viwu.animation.play('results-bad');
 				persistentUpdate = true;
 
