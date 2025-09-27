@@ -35,6 +35,9 @@ class Viwu extends FlxSprite
 	{
 		super.update(elapsed);
 
-		offset.set(offsets.get(animation.name).x, offsets.get(animation.name).y);
+		if (offsets.exists(animation.name))
+			offset.set(offsets.get(animation.name).x, offsets.get(animation.name).y);
+		else
+			offset.set();
 	}
 }
