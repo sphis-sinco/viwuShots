@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="balloons.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="balloon blue0000" x="4" y="4" width="329" height="368"/>
+	<SubTexture name="balloon purple0000" x="341" y="4" width="329" height="368"/>
+	<SubTexture name="balloon red0000" x="678" y="4" width="329" height="368"/>
+	<SubTexture name="balloon white0000" x="4" y="380" width="329" height="368"/>
+</TextureAtlas>

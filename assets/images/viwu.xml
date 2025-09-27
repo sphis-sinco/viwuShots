@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="viwu.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="viwu animation focus0000" x="1618" y="4" width="357" height="516" frameX="-21" frameY="-6" frameWidth="357" frameHeight="516"/>
+	<SubTexture name="viwu animation focus0001" x="1618" y="4" width="357" height="516" frameX="-21" frameY="-6" frameWidth="357" frameHeight="516"/>
+	<SubTexture name="viwu animation focus0002" x="4" y="4" width="371" height="534" frameX="-14" frameY="0" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation focus0003" x="383" y="4" width="602" height="505" frameX="0" frameY="-17" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation focus0004" x="383" y="4" width="602" height="505" frameX="0" frameY="-17" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation focus0005" x="993" y="4" width="617" height="491" frameX="-7" frameY="-29" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation focus0006" x="993" y="4" width="617" height="491" frameX="-7" frameY="-29" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation focus0007" x="993" y="4" width="617" height="491" frameX="-7" frameY="-29" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation idle0000" x="1618" y="4" width="357" height="516"/>
+	<SubTexture name="viwu animation shoot0000" x="993" y="4" width="617" height="491" frameX="-38" frameY="-75" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation shoot0001" x="993" y="4" width="617" height="491" frameX="-38" frameY="-75" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation shoot0002" x="4" y="546" width="674" height="490" frameX="-35" frameY="-75" frameWidth="770" frameHeight="566"/>
+	<SubTexture name="viwu animation shoot0003" x="686" y="546" width="770" height="561" frameX="0" frameY="0" frameWidth="770" frameHeight="566"/>
+	<SubTexture name="viwu animation shoot0004" x="1464" y="546" width="466" height="561" frameX="0" frameY="0" frameWidth="770" frameHeight="566"/>
+	<SubTexture name="viwu animation shoot0005" x="4" y="1115" width="489" height="560" frameX="0" frameY="-1" frameWidth="770" frameHeight="566"/>
+	<SubTexture name="viwu animation shoot0006" x="4" y="1115" width="489" height="560" frameX="0" frameY="-1" frameWidth="770" frameHeight="566"/>
+	<SubTexture name="viwu animation shoot0007" x="4" y="1115" width="489" height="560" frameX="0" frameY="-1" frameWidth="770" frameHeight="566"/>
+	<SubTexture name="viwu animation unfocus0000" x="993" y="4" width="617" height="491" frameX="-7" frameY="-29" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation unfocus0001" x="993" y="4" width="617" height="491" frameX="-7" frameY="-29" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation unfocus0002" x="993" y="4" width="617" height="491" frameX="-7" frameY="-29" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation unfocus0003" x="383" y="4" width="602" height="505" frameX="0" frameY="-17" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation unfocus0004" x="383" y="4" width="602" height="505" frameX="0" frameY="-17" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation unfocus0005" x="383" y="4" width="602" height="505" frameX="-14" frameY="0" frameWidth="624" frameHeight="534"/>
+	<SubTexture name="viwu animation unfocus0006" x="1618" y="4" width="357" height="516" frameX="-21" frameY="-6" frameWidth="357" frameHeight="516"/>
+	<SubTexture name="viwu animation unfocus0007" x="1618" y="4" width="357" height="516" frameX="-21" frameY="-6" frameWidth="357" frameHeight="516"/>
+</TextureAtlas>
